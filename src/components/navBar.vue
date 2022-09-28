@@ -13,10 +13,7 @@
     "
   >
     <div class="flex items-center justify-between mt-3">
-      <span style="color: red">I</span><span style="color: blue">D</span
-      ><span style="color: green">Y</span><span style="color: yellow">L</span
-      ><span style="color: purple">L</span><span style="color: pink">I</span
-      ><span>C</span>
+      <span style="color: blueviolet">IDYLLIC</span>
 
       <!-- Mobile menu button -->
       <div @click="showMenu = !showMenu" class="flex md:hidden">
@@ -48,8 +45,20 @@
         md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0
       "
     >
-      <li class="text-sm font-bold text-black-800 hover:text-blue-400">
-        <a href="#Home">Home</a>
+      <li
+        class="text-sm font-bold text-black-800 hover:text-blue-400"
+        v-for="(item, $index) in items"
+        :key="$index"
+      >
+        <a
+          @click="setUrlSection(item.section)"
+          :href="item.link"
+          :class="{ active: urlSection === item.link }"
+          >{{ item.name }}</a
+        >
+      </li>
+      <!-- <li class="text-sm font-bold text-black-800 hover:text-blue-400">
+        <a  href="#Home">Home</a>
       </li>
       <li class="text-sm font-bold text-black-800 hover:text-blue-400">
         <a href="#About">About</a>
@@ -59,7 +68,7 @@
       </li>
       <li class="text-sm font-bold text-black-800 hover:text-blue-400">
         <a href="#Contacts">Contacts</a>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </template>
@@ -68,7 +77,35 @@ export default {
   data() {
     return {
       showMenu: false,
+      items: [
+        {
+          name: "Home",
+          link: "#Home",
+          section: "hash",
+        },
+        {
+          name: "About",
+          link: "#About",
+          section: "hash",
+        },
+        {
+          name: "Gallery",
+          link: "#Gallery",
+          section: "hash",
+        },
+        {
+          name: "Contacts",
+          link: "#Contacts",
+          section: "hash",
+        },
+      ],
+      urlSection: window.location.hash || window.location.pathname,
     };
+  },
+  methods: {
+    setUrlSection(section) {
+      setTimeout(() => (this.urlSection = window.location[section]));
+    },
   },
 };
 </script>
@@ -79,9 +116,8 @@ span {
   font-family: Josefin Sans;
   gap: 2px;
 }
-
-ul li a:active {
-  color: green;
+ul li .active {
   text-decoration: underline;
+  color: green;
 }
 </style>
