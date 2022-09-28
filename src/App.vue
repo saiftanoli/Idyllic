@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <nav-bar></nav-bar>
+    <idyllic-transform></idyllic-transform>
+    <idyllic-about></idyllic-about>
+    <pic-gallery></pic-gallery>
+    <idyllic-footer></idyllic-footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import NavBar from "./components/navBar.vue";
+import IdyllicTransform from "@/components/idyllicTransform.vue";
+import IdyllicAbout from "@/components/idyllicAbout.vue";
+import PicGallery from "@/components/picGallery.vue";
+import IdyllicFooter from "@/components/IdyllicFooter.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    NavBar,
+    IdyllicTransform,
+    IdyllicAbout,
+    PicGallery,
+    IdyllicFooter,
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
